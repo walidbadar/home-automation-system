@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zephyr WiFi Setup</title>
+  <style>
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f172a;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      color: #e2e8f0;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .container {
+      max-width: 440px;
+      width: 100%;
+      background: rgba(57, 79, 116, 1);
+      padding: 40px;
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      animation: fadeIn 1s ease-out;
+    }
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-size: 24px;
+      margin: 8px 0;
+      font-weight: 600;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      font-size: 15px;
+      color: #94a3b8;
+      margin: 0 0 24px 0;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    input {
+      margin-bottom: 8px; 
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid rgba(148, 163, 184, 0.2);
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.6);
+      color: #f1f5f9;
+      font-size: 16px;
+      outline: none;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+    input:focus {
+      border-color: #3b82f6;
+      background: rgba(15, 23, 42, 0.8);
+    }
+    .password-wrapper {
+      position: relative;
+    }
+    .password-wrapper span {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #64748b;
+    }
+    button {
+      width: 100%;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+    }
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    .status {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      animation: slideIn 0.5s ease;
+    }
+    .success {
+      background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(5,150,105,0.1));
+      border: 1px solid rgba(52,211,153,0.3);
+      color: #34d399;
+    }
+    .error {
+      background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(220,38,38,0.1));
+      border: 1px solid rgba(248,113,113,0.3);
+      color: #f87171;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Zephyr HTTP Server</h1>
+    <img src="https://www.zephyrproject.org/wp-content/uploads/2023/03/Zephyr_color-10.svg" alt="Zephyr" style="display:block;margin:0 auto 10px;height:150px;">
+    <h2>WiFi Setup</h2>
+    <p>Enter your WiFi credentials to connect your Zephyr device to the network</p>
+    
+    <form id="wifi-form">
+      <label>Network Name (SSID)</label>
+      <input type="text" id="ssid" placeholder="Enter WiFi network name">
+      
+      <label>Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Enter WiFi password">
+      </div>
+      
+      <button type="submit" id="submit-btn">
+        <span>📶</span> Connect to Network
+      </button>
+    </form>
+    <div id="status-message"></div>
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>

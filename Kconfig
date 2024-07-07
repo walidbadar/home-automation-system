@@ -1,0 +1,77 @@
+# Config options for Home Automation System (MQTT Client)
+# Copyright (c) 2025 Muhammad Waleed Badar
+# SPDX-License-Identifier: Apache-2.0
+
+mainmenu "Home Automation System"
+
+config MAX_APPLIANCES
+  int "Maximum number of appliances"
+  default 2
+
+menu "MQTT Configuration"
+depends on MQTT_LIB
+
+config SERVER_ADDR
+  string "MQTT Broker Address"
+  default "192.168.1.102"
+
+config SERVER_PORT
+  int "MQTT Broker Port"
+  default 1883
+
+config MQTT_CONNECT_TIMEOUT_MS
+  int "MQTT Connection Timeout (ms)"
+  default 5000
+
+config MQTT_SLEEP_MS
+  int "MQTT Polling Sleep Time (ms)"
+  default 1000
+
+config MQTT_CONNECT_TRIES
+  int "MQTT Connection Retry Limit"
+  default 10
+
+config MQTT_CLIENTID
+  string "MQTT Client ID"
+  default "zephyr"
+
+endmenu # MQTT Configuration
+
+menu "Wi-Fi Configuration"
+depends on WIFI
+
+config WIFI_STATIC_SSID
+  string "Wi-Fi SSID"
+  default "YourSSID"
+
+config WIFI_STATIC_PSK
+  string "Wi-Fi Password"
+  default "YourPassword"
+
+config WIFI_CONN_RETRY_DELAY
+  int "Wi-Fi Connection Retry Delay (s)"
+  default 5
+
+config NET_DHCPV4_SERVER
+  bool "Enable DHCP Server"
+  default y if WIFI_USAGE_MODE_STA_AP
+
+config WIFI_AP_STATIC_SSID
+  string "Static SSID for WiFi AP"
+  default "Zephyr-AP"
+
+config WIFI_AP_STATIC_PSK
+  string "Static Password for WiFi AP"
+  default ""
+
+config WIFI_AP_STATIC_IP_ADDR
+  string "Access-point statically configured IP address"
+  default "192.168.4.1"
+
+config WIFI_AP_STATIC_NETMASK
+  string "Access-point statically configured Netmask"
+  default "255.255.255.0"
+
+endmenu # Wi-Fi Configuration
+
+source "Kconfig.zephyr"
