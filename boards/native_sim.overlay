@@ -1,0 +1,54 @@
+/*
+ * Copyright (c) 2025 Muhammad Waleed Badar
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <zephyr/dt-bindings/lvgl/lvgl.h>
+
+/ {
+	aliases {
+		sw1 = &button1;
+		sw2 = &button2;
+		led0 = &led0;
+		appliance1 = &appliance1;
+		appliance2 = &appliance2;
+	};
+
+	buttons {
+		compatible = "gpio-keys";
+        debounce-interval-ms = <100>;
+
+		button1: button_1 {
+			gpios = <&gpio0 1 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "User Button 1";
+			zephyr,code = <INPUT_KEY_1>;
+		};
+		button2: button_2 {
+			gpios = <&gpio0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "User Button 2";
+			zephyr,code = <INPUT_KEY_2>;
+		};
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		led0: led_0 {
+			gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+			label = "Status LED";
+		};
+
+		compatible = "gpio-leds";
+		appliance1: appliance_1 {
+			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
+			label = "Appliance 0";
+		};
+
+		compatible = "gpio-leds";
+		appliance2: appliance_2 {
+			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
+			label = "Appliance 1";
+		};
+	};
+};

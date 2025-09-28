@@ -23,24 +23,43 @@ This project implements a smart home automation solution that allows users to co
 
 ### Installation
 
-1. Clone the repository:
+#### 1. Clone the repository:
 ```bash
 git clone https://github.com/walidbadar/home-automation-system.git
 cd home-automation-system
 ```
 
-2. Build the firmware
+#### 2. Build the firmware
 ```bash
 west build -p auto -b esp32_devkitc/esp32/procpu .
 ```
 
-3. Configure your WiFi and MQTT broker settings
+#### 3. Configure your WiFi and MQTT broker settings
 ```bash
 west build -t menuconfig
 ```
 ![menuconfig](img/menuconfig.gif)
 
-4. Flash the firmware
+#### 4. Flash the firmware
 ```bash
 west flash
 ```
+### Build and run with native_sim board
+
+#### 1. Setup tap interface
+```bash
+sudo apt install -y socat libpcap-dev
+git clone https://github.com/zephyrproject-rtos/net-tools
+cd net-tools
+make
+
+./net-setup start
+```
+
+#### 2. Build and run
+```bash
+cd home-automation-system
+west build -p auto -b native_sim .
+west build -t run
+```
+![native_sim](img/native_sim.png)
