@@ -17,7 +17,7 @@
 
 int wifi_ap_enable(struct net_if *iface);
 int wifi_ap_disable(struct net_if *iface);
-int wifi_connect(struct net_if *iface, uint8_t *ssid, uint8_t *psk);
-int wifi_disconnect(struct net_if *iface, uint8_t *ssid, uint8_t *psk);
+int wifi_connect(struct net_if *iface, const uint8_t *ssid, const uint8_t *psk);
+int wifi_disconnect(struct net_if *iface, const uint8_t *ssid, const uint8_t *psk);
 
 #endif /* APP_INCLUDE_WIFI_CONN_MGR_H_ */

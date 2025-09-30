@@ -13,6 +13,11 @@
 		appliance2 = &appliance2;
 	};
 
+	wlan1: wlan1 {
+		compatible = "espressif,esp32-wifi";
+		status = "okay";
+	};
+
 	buttons {
 		compatible = "gpio-keys";
         debounce-interval-ms = <100>;

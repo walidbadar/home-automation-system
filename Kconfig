@@ -50,7 +50,7 @@ config WIFI_STATIC_PSK
 
 config WIFI_CONN_RETRY_DELAY
   int "Wi-Fi Connection Retry Delay (s)"
-  default 5
+  default 10
 
 config NET_DHCPV4_SERVER
   bool "Enable DHCP Server"

@@ -190,7 +190,7 @@ static void wifi_event_handler(struct net_mgmt_event_callback *cb, uint64_t mgmt
 	}
 }
 
-int wifi_connect(struct net_if *iface, uint8_t *ssid, uint8_t *psk)
+int wifi_connect(struct net_if *iface, const uint8_t *ssid, const uint8_t *psk)
 {
 	struct wifi_connect_req_params config = {0};
 	struct wifi_iface_status status = {0};
@@ -221,7 +221,7 @@ int wifi_connect(struct net_if *iface, uint8_t *ssid, uint8_t *psk)
 	return ret;
 }
 
-int wifi_disconnect(struct net_if *iface, uint8_t *ssid, uint8_t *psk)
+int wifi_disconnect(struct net_if *iface, const uint8_t *ssid, const uint8_t *psk)
 {
 	struct wifi_connect_req_params config = {0};
 	int ret;
